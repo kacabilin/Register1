@@ -17,15 +17,6 @@
 <div class="addstudent">
 <div class="details">Please Enter Details Below</div>
 <form class="form-horizontal" method="POST" action="insert.php">
-
-<div class="control-group">
-<label class="control-label">ID</label>
-<div class="controls">
-<input type="text" name="id" pattern="[A-Za-z  0-9\s]{1,200}" placeholder="Firstname" required>
-
-</div>
-</div>
-
     
 <div class="control-group">
 <label class="control-label">Firstname:</label>

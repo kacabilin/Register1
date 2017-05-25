@@ -38,7 +38,7 @@ public class Insert extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 		
-                int id = Integer.parseInt(request.getParameter("id"));
+              
 		String first_name = request.getParameter("first_name");
 		String last_name = request.getParameter("last_name");
 		String username = request.getParameter("username");
@@ -48,7 +48,7 @@ public class Insert extends HttpServlet {
 		Connection connection = SQLOperations.getConnection();
 		
 		Profile profile = new Profile();
-                profile.setId(id);
+                
 		profile.setFirst_name(first_name);
 		profile.setLast_name(last_name);
 		profile.setUsername(username);
