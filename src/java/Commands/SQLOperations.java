@@ -30,17 +30,17 @@ public class SQLOperations implements SQLCommands {
     }
 
     //insert
-    public static synchronized boolean addUser(Profile profile, Connection connection){
+    public static boolean addUser (Profile profile, Connection connection){
         try {
             connection.setAutoCommit(false);
-            PreparedStatement pstmt = connection.prepareStatement(ADD_User);
+            PreparedStatement pstmt = connection.prepareStatement(ADDUser);
 
-            pstmt.setInt(1, profile.getId());
-            pstmt.setString(2, profile.getFirst_name());
-            pstmt.setString(3, profile.getLast_name());
+            pstmt.setString(1, profile.getId());
+            pstmt.setString(2, profile.getFirstname());
+            pstmt.setString(3, profile.getLastname());
             pstmt.setString(4, profile.getUsername());
             pstmt.setString(5, profile.getPassword());
-
+            
 
             pstmt.executeUpdate();
             connection.commit();
@@ -51,6 +51,48 @@ public class SQLOperations implements SQLCommands {
         }
         return true;
     }
+
+    //checking if studentid is exist
+    public static boolean cid(String id){
+        boolean status = false;
+        Connection conn = SQLOperations.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn.setAutoCommit(false);
+            pstmt = conn.prepareStatement(SQLOperations.CheckID);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            status = rs.next();
+        }catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return status;
+    }
+    
 
     //checking if username is exist
     public static boolean un(String username){
@@ -92,4 +134,27 @@ public class SQLOperations implements SQLCommands {
 
         return status;
     }
+    
+    //For display after register
+    public static Profile ForUsernameSearch(String search, Connection connection){
+		Profile profile = new Profile();
+		try{
+			 connection.setAutoCommit(false);
+			PreparedStatement pstmt = connection.prepareStatement(Username);
+			pstmt.setString(1, search);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+                                profile.setId(rs.getString("id"));
+                                profile.setFirstname(rs.getString("firstname"));
+                                profile.setLastname(rs.getString("lastname"));
+				profile.setUsername(rs.getString("username"));
+				profile.setPassword(rs.getString("password"));			
+			}
+		}catch (SQLException sqle) {
+			System.out.println("SQLException - searchEmployee: " 
+					+ sqle.getMessage());
+			return profile; 
+		}	
+		return profile;
+	}
 }

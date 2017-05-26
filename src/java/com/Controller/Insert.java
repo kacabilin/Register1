@@ -38,9 +38,9 @@ public class Insert extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 		
-              
-		String first_name = request.getParameter("first_name");
-		String last_name = request.getParameter("last_name");
+                String id = request.getParameter("id");
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String confirm_password = request.getParameter("confirm_password");
@@ -49,12 +49,20 @@ public class Insert extends HttpServlet {
 		
 		Profile profile = new Profile();
                 
-		profile.setFirst_name(first_name);
-		profile.setLast_name(last_name);
+                profile.setId(id);
+		profile.setFirstname(firstname);
+		profile.setLastname(lastname);
 		profile.setUsername(username);
 		profile.setPassword(password);
 		profile.setConfirm_password(confirm_password);
 		
+                if(SQLOperations.cid(id)){
+                    out.print("<script type=\"text/javascript\">");
+			 out.println("alert('Student-ID Already exist');");
+			 out.println("location=window.history.back();");
+			 out.println("</script>");
+			out.close();
+                }else{
 		if(SQLOperations.un(username)){
 			out.print("<script type=\"text/javascript\">");
 			 out.println("alert('Username Already exist');");
@@ -78,6 +86,7 @@ public class Insert extends HttpServlet {
 			out.close();	
 		}
 		}
+                }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

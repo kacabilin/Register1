@@ -4,6 +4,9 @@
     Author     : ADI
 --%>
 
+<%@page import="com.Model.Profile"%>
+<%@page import="Commands.SQLOperations"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="header.jsp"%>
@@ -17,11 +20,19 @@
 <div class="addstudent">
 <div class="details">Please Enter Details Below</div>
 <form class="form-horizontal" method="POST" action="insert.php">
+
+<div class="control-group">
+<label class="control-label">Student ID:</label>
+<div class="controls">
+<input type="text" name="id" pattern="[A-Za-z  0-9\s]{1,200}" placeholder="Student ID" required>
+
+</div>
+</div>
     
 <div class="control-group">
 <label class="control-label">Firstname:</label>
 <div class="controls">
-<input type="text" name="first_name" pattern="[A-Za-z  0-9\s]{1,200}" placeholder="Firstname" required>
+<input type="text" name="firstname" pattern="[A-Za-z  0-9\s]{1,200}" placeholder="Firstname" required>
 
 </div>
 </div>
@@ -29,7 +40,7 @@
 <div class="control-group">
 <label class="control-label">Lastname:</label>
 <div class="controls">
-<input type="text" name="last_name" pattern="[A-Za-z\s]{1,200}" placeholder="Lastname" required>
+<input type="text" name="lastname" pattern="[A-Za-z\s]{1,200}" placeholder="Lastname" required>
 
 </div>
 </div>
@@ -65,6 +76,9 @@
 <div class="controls">
 <button name="submit" type="submit" class="btn btn-success"><i class="icon-save icon-large"></i>&nbsp;Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button name="submit" type="reset" class="btn btn-danger"><i class="icon-trash icon-large"></i>&nbsp;Reset</button>
+
+                                       
+
 </div>
 </div>
 </form>
@@ -73,6 +87,7 @@
 </div>
 </div>
 </div>
+
 
 <%@ include file="footer.jsp"%>
 

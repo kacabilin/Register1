@@ -15,9 +15,9 @@ public interface SQLCommands {
     String CONNECTION_NOT_FOUND = "Invalid Connection. "
             + "Unable to process request.";
 
-    String ADD_User = "insert into gg_exe(user_id, first_name, last_name, username, password," +
-            "values(?,?,?,?,?)";
+    String ADDUser = "INSERT INTO finale (id, firstname, lastname, username, password) values(?,?,?,?,?)";
 
-    String Username = "select * from gg_exe where username=? ";
+    String Username = "select * from finale where username=? ";
     
+    String CheckID = "select from finale where id =?";
 }

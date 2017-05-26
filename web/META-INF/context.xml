@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
-  <Resource name="jdbc/postgres" auth="Container"
-            type="javax.sql.DataSource" username="postgres" password="khevin"
-            driverClassName="org.postgresql.Driver" 
-            url="jdbc:postgresql://localhost:5432/postgres"
-            maxActive="25" 
-            />
-  
+<Context path="/Register1">
+  <Resource auth="Container" 
+            driverClassName="org.postgresql.Driver" maxActive="25" 
+            name="jdbc/postgres" username="postgres" password="khevin" 
+            type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/postgres"/>
 </Context>
