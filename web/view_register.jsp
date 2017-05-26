@@ -20,12 +20,49 @@
 
 	while (rs.next()){
 		%>
-		<h4>Student-ID: <%=rs.getString("id")%></h4>
-		<h4>first name: <%= rs.getString("firstname") %></h4>
-		<h4>last name: <%= rs.getString("lastname") %></h4>
-		<h4>Username: <%= rs.getString("username") %></h4>
-                <h4>Password: <%= rs.getString("password") %></h4><br/>
-		
+                <div class="container">
+				<div class="row">
+					<div class="addstudent">
+					<div class="details">xx</div>
+                <form method="post" class="form-horizontal">
+                <div class="control-group">
+                <label class="control-label">Student-id</label>
+                <div class="controls">
+                <input type="text" id="inputEmail" readonly="readonly" value="<%=rs.getString("id")%>">
+                </div>
+                </div>
+                
+                <div class="control-group">
+                <label class="control-label">First Name</label>
+                <div class="controls">
+                <input type="text" id="inputEmail" readonly="readonly" value="<%= rs.getString("firstname")%>">
+                </div>
+                </div>
+                
+                <div class="control-group">
+                <label class="control-label">Last Name</label>
+                <div class="controls">
+                <input type="text" id="inputEmail" readonly="readonly" value="<%= rs.getString("lastname")%>">
+                </div>
+                </div>
+                
+                <div class="control-group">
+                <label class="control-label">Username</label>
+                <div class="controls">
+                <input type="text" id="inputEmail" readonly="readonly" value="<%= rs.getString("username")%>">
+                </div>
+                </div>
+                
+                <div class="control-group">
+                <label class="control-label">Password</label>
+                <div class="controls">
+                <input type="text" id="inputEmail" readonly="readonly" value="<%= rs.getString("password")%>"><br/>
+                </div>
+                </div>
+                </div>
+</div>
+</div>
+</form>
 		<%
 	}
 %>
