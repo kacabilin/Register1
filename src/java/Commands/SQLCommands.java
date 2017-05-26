@@ -20,4 +20,6 @@ public interface SQLCommands {
     String Username = "select * from finale where username=? ";
     
     String CheckID = "select from finale where id =?";
+    
+    String ViewReg = "select * from finale";
 }

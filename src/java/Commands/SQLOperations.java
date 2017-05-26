@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by ADI on 5/25/2017.
@@ -135,4 +136,17 @@ public class SQLOperations implements SQLCommands {
         return status;
     }
     
+    //view register
+    public static ResultSet getAllProfile(Connection connection) {
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(ViewReg);  
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getALLProfile: " 
+			  + sqle.getMessage());
+			return rs; 
+		}	
+		return rs;
+	}
 }
