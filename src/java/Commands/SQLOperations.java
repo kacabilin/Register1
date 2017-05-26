@@ -135,26 +135,4 @@ public class SQLOperations implements SQLCommands {
         return status;
     }
     
-    //For display after register
-    public static Profile ForUsernameSearch(String search, Connection connection){
-		Profile profile = new Profile();
-		try{
-			 connection.setAutoCommit(false);
-			PreparedStatement pstmt = connection.prepareStatement(Username);
-			pstmt.setString(1, search);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()){
-                                profile.setId(rs.getString("id"));
-                                profile.setFirstname(rs.getString("firstname"));
-                                profile.setLastname(rs.getString("lastname"));
-				profile.setUsername(rs.getString("username"));
-				profile.setPassword(rs.getString("password"));			
-			}
-		}catch (SQLException sqle) {
-			System.out.println("SQLException - searchEmployee: " 
-					+ sqle.getMessage());
-			return profile; 
-		}	
-		return profile;
-	}
 }
