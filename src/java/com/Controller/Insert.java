@@ -74,7 +74,7 @@ public class Insert extends HttpServlet {
 			SQLOperations.addUser(profile, connection);
 			out.print("<script type=\"text/javascript\">");
 			 out.println("alert('Sucess');");
-			 out.println("location='register.jsp';");
+			 out.println("location='view_register.jsp';");
 			 out.println("</script>");
 			out.close();
 			System.out.println(connection);
